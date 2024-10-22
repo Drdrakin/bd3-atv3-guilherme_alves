@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fire Alunos</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="icon" href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fmedium.com%2Ffirebase-developers%2Fwhat-is-firebase-the-complete-story-abridged-bcc730c5f2c0&psig=AOvVaw1mea1w5KLqtUwD8uShyC6b&ust=1729722172727000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIiX5a-Do4kDFQAAAAAdAAAAABAE">
+    </head>
+
+    <body>
+
+        <h1>Gerenciamento de Alunos da sua Turma</h1>
+        <div class="content">
+            <form id="add-book-form">
+                <h2>Cadastre os dados do aluno</h2>
+                <fieldset>
+                    <legend>Dados Pessoais</legend>
+                    <input type="text" name="nome" placeholder="Nome">
+                    <input type="text" name="cpf" placeholder="CPF">
+                    <input type="text" name="rg" placeholder="RG">
+                    <input type="date" name="data_nascimento" placeholder="Data de Nascimento">
+                </fieldset>
+                <fieldset>
+                    <legend>Dados de Contato</legend>
+                    <input type="text" name="telefone_aluno" placeholder="Telefone Aluno">
+                    <input type="text" name="telefone_responsavel" placeholder="Telefone do Responsável">
+                    <input type="text" name="email" placeholder="Email">
+                </fieldset>
+                <button>CADASTRAR</button>
+            </form>
+            <section>
+                <h2>Alunos Cadastrados</h2>
+                <ul id="book-list"></ul>
+            </section>
+        </div>
+    
+    </body>
+
+    <!-- IMPORT DO SDK DO FIREBASE --> 
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-app.js"> </script> 
+
+    <!-- IMPORT DO SDK DO FIRESTORE --> 
+    <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase-firestore.js"></script>
+
+    <!-- Credenciais -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAwjQdv_GltcviPOdMA19W8e1svqafXbBQ",
+            authDomain: "bd3-app-libri-guilherme.firebaseapp.com",
+            projectId: "bd3-app-libri-guilherme",
+            storageBucket: "bd3-app-libri-guilherme.appspot.com",
+            messagingSenderId: "909440478220",
+            appId: "1:909440478220:web:c8c3415986bf63999a9229",
+            measurementId: "G-SW6PPG0MHC"
+        };
+        
+        //Inicializa o Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.firestore();
+        console.log(db);
+
+    </script>
+
+    <script src="app.js"></script>
+
+</html>
