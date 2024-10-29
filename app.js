@@ -95,3 +95,28 @@ form.addEventListener('submit', (event)=>{
     });
 });
 
+//Validação para telefone
+function formatPhoneNumber(input) {
+    let value = input.value.replace(/\D/g, '');
+    if (value.length > 2) {
+        value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7, 11)}`;
+    }
+    input.value = value;
+}
+
+function emailCheck() {
+    
+}
+
+document.querySelector('input[name="telefone_aluno"]').addEventListener('input', function(event) {
+    formatPhoneNumber(event.target);
+});
+
+document.querySelector('input[name="telefone_responsavel"]').addEventListener('input', function(event) {
+    formatPhoneNumber(event.target);
+});
+
+document.querySelector('input[name="email"]').addEventListener('input', function(event){
+    
+});
+
