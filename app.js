@@ -1,22 +1,49 @@
-const listBook = document.querySelector('#book-list')
+const listBook = document.querySelector('#student-list')
+
+function formatDate(dateString) {
+    let date = new Date(dateString);
+    return date.toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+    });
+}
 
 function renderList(doc){
 
     let li = document.createElement('li');
-    let autor = document.createElement('span');
-    let titulo = document.createElement('span');
-    let excluir = document.createElement('div'); 
+    
+    let cpf = document.createElement('span');
+    let data_nascimento = document.createElement('span');
+    let email = document.createElement('span');
+    let nome = document.createElement('span');
+    let rg = document.createElement('span');
+    let telefone_aluno = document.createElement('span');
+    let telefone_responsavel = document.createElement('span');
 
-    data = doc.data();
+    let excluir = document.createElement('div');
 
-    autor.textContent = data.autor;
-    titulo.textContent = data.titulo;
+    docData = doc.data();
+
+    cpf.textContent = "CPF: " + docData.cpf;
+    data_nascimento.textContent = "Data de Nascimento: " + formatDate(docData.data_nascimento);
+    email.textContent = "Email: " + docData.email;
+    nome.textContent = docData.nome;
+    rg.textContent = "RG: " + docData.rg;
+    telefone_aluno.textContent = "Telefone do Responsável: " + docData.telefone_aluno;
+    telefone_responsavel.textContent = "Telefone do Aluno: " + docData.telefone_responsavel;
+
     excluir.textContent = 'X';
 
-    li.setAttribute('data-id', doc.titulo);
+    li.setAttribute('data-id', cpf);
 
-    li.appendChild(titulo);
-    li.appendChild(autor);
+    li.appendChild(nome);
+    li.appendChild(data_nascimento);
+    li.appendChild(email);
+    li.appendChild(cpf);
+    li.appendChild(rg);
+    li.appendChild(telefone_aluno);
+    li.appendChild(telefone_responsavel);
 
     listBook.appendChild(li);
 
@@ -43,17 +70,27 @@ db.collection("BD3-NoSQL-Firestore")
         )
     })
 
-const form = document.querySelector('#add-book-form')
+const form = document.querySelector('#add-form')
 
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
 
     db.collection("BD3-NoSQL-Firestore").add({
-        autor: form.autor.value,
-        titulo: form.titulo.value
+        cpf: form.cpf.value,
+        data_nascimento: form.data_nascimento.value,
+        email: form.email.value,
+        nome: form.nome.value,
+        rg: form.rg.value,
+        telefone_aluno: form.telefone_aluno.value,
+        telefone_responsavel: form.telefone_responsavel.value
     }).then(()=>{
-        form.autor.value = '';
-        form.titulo.value = '';
+        form.cpf.value = '';
+        form.data_nascimento.value = '';
+        form.email.value = '';
+        form.nome.value = '';
+        form.rg.value = '';
+        form.telefone_aluno.value = '';
+        form.telefone_responsavel.value = '';
         window.location.reload();
     });
 });

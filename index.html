@@ -10,28 +10,28 @@
 
     <body>
 
-        <h1>Gerenciamento de Alunos da sua Turma</h1>
+        <h1>Gerenciamento de Alunos</h1>
         <div class="content">
-            <form id="add-book-form">
+            <form id="add-form">
                 <h2>Cadastre os dados do aluno</h2>
                 <fieldset>
                     <legend>Dados Pessoais</legend>
                     <input type="text" name="nome" placeholder="Nome">
-                    <input type="text" name="cpf" placeholder="CPF">
-                    <input type="text" name="rg" placeholder="RG">
                     <input type="date" name="data_nascimento" placeholder="Data de Nascimento">
+                    <input id="cpf-input" type="text" name="cpf" placeholder="CPF">
+                    <input id="rg-input" type="text" name="rg" placeholder="RG">
                 </fieldset>
                 <fieldset>
                     <legend>Dados de Contato</legend>
-                    <input type="text" name="telefone_aluno" placeholder="Telefone Aluno">
+                    <input type="text" name="telefone_aluno" placeholder="Telefone do Aluno">
                     <input type="text" name="telefone_responsavel" placeholder="Telefone do Responsável">
-                    <input type="text" name="email" placeholder="Email">
+                    <input type="text" name="email" placeholder="Email do Aluno">
                 </fieldset>
                 <button>CADASTRAR</button>
             </form>
             <section>
                 <h2>Alunos Cadastrados</h2>
-                <ul id="book-list"></ul>
+                <ul id="student-list"></ul>
             </section>
         </div>
     

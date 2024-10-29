@@ -14,10 +14,16 @@ h1{
     text-align: center;
 }
 
-
 legend{
     font-size: 1.5em;
 }
+
+#student-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px; 
+}
+
 
 fieldset:last-of-type{
     margin-top: 2em;
@@ -53,7 +59,7 @@ li{
     color: #555;
     position: relative;
     border-bottom: 1px solid #e6e6e6;
-    height: 46px;
+    height: auto;
 }
 
 li:nth-child(even){
@@ -65,10 +71,16 @@ li span{
     display: block;
 }
 
-li span:nth-child(2){
+li span{
     font-size: 16px;
     margin-top: 6px;
     color: #999;
+}
+
+li span:nth-child(1){
+    font-size: 24px;
+    color: #000;
+    margin-top: 0;
 }
 
 li div{
@@ -92,6 +104,23 @@ form input{
     display: block;
     box-sizing: border-box;
     font-size: 1.2em;
+}
+
+input[name="nome"], input[name="data_nascimento"] {
+    display: inline-block;
+    width: 48%;
+    margin-right: 4%;
+}
+
+input[name="data_nascimento"] {
+    margin-right: 0;
+}
+
+#cpf-input, #rg-input { 
+    display: block; 
+    float: none; 
+    margin-right: 0; 
+    width: 100%; 
 }
 
 form input:focus{
