@@ -35,7 +35,7 @@ function renderList(doc){
 
     excluir.textContent = 'X';
 
-    li.setAttribute('data-id', cpf);
+    li.setAttribute('data-id', doc.id);
 
     li.appendChild(nome);
     li.appendChild(data_nascimento);
