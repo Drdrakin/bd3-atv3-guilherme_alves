@@ -75,6 +75,18 @@ const form = document.querySelector('#add-form')
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
 
+    const emailInput = form.email.value; 
+    if (!validateEmail(emailInput)) { 
+        alert('Por favor, insira um email válido.'); 
+        return; 
+    }
+
+    const cpfInput = form.cpf.value; 
+    if (!validateCPF(cpfInput)) { 
+        alert('Por favor, insira um CPF válido (formato: xxx.xxx.xxx-xx).'); 
+        return; 
+    }
+
     db.collection("BD3-NoSQL-Firestore").add({
         cpf: form.cpf.value,
         data_nascimento: form.data_nascimento.value,
@@ -92,8 +104,21 @@ form.addEventListener('submit', (event)=>{
         form.telefone_aluno.value = '';
         form.telefone_responsavel.value = '';
         window.location.reload();
+        alert("Inserido com Sucesso!")
     });
 });
+
+//Cpf e rg
+function validateCPF(cpf) {
+    const re = /^\d{3}\.\d{3}\.\d{3}\-\d{2}$/;
+    return re.test(cpf);
+}
+
+//Validação para email (regex)
+function validateEmail(email) { 
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    return re.test(email);
+}
 
 //Validação para telefone
 function formatPhoneNumber(input) {
@@ -104,9 +129,53 @@ function formatPhoneNumber(input) {
     input.value = value;
 }
 
-function emailCheck() {
+// Função para formatar CPF
+function formatCPF(input) {
+    let value = input.value.replace(/\D/g, '');
     
+    if (value.length > 11) {
+        value = value.slice(0, 11);
+    }
+
+    if (value.length > 3) {
+        value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+    }
+    if (value.length > 6) {
+        value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+    }
+    if (value.length > 9) {
+        value = value.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+    }
+
+    input.value = value;
 }
+
+// Função para formatar RG
+function formatRG(input) {
+    let value = input.value.replace(/\D/g, '');
+
+    if (value.length > 11) {
+        value = value.slice(0, 11);
+    }
+    if (value.length > 2) {
+        value = value.replace(/^(\d{2})(\d)/, '$1.$2');
+    }
+    if (value.length > 5) {
+        value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    }
+    if (value.length > 8) {
+        value = value.replace(/^(\d{2})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+    }
+    input.value = value;
+}
+
+document.querySelector('input[name="cpf"]').addEventListener('input', function(event) {
+    formatCPF(event.target);
+});
+
+document.querySelector('input[name="rg"]').addEventListener('input', function(event) {
+    formatRG(event.target);
+});
 
 document.querySelector('input[name="telefone_aluno"]').addEventListener('input', function(event) {
     formatPhoneNumber(event.target);
@@ -116,7 +185,4 @@ document.querySelector('input[name="telefone_responsavel"]').addEventListener('i
     formatPhoneNumber(event.target);
 });
 
-document.querySelector('input[name="email"]').addEventListener('input', function(event){
-    
-});
 

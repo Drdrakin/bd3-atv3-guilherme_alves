@@ -39,7 +39,7 @@ h2{
 
 .content{
     background: #fff;
-    max-width: 960px;
+    max-width: 1060px;
     margin: 30px auto;
     padding:  20px 30px;
     border-radius: 10px;
@@ -74,7 +74,7 @@ li span{
 li span{
     font-size: 16px;
     margin-top: 6px;
-    color: #999;
+    color: #494949;
 }
 
 li span:nth-child(1){
@@ -140,7 +140,7 @@ button{
     display: block;
     background: #fff;
     border-radius: 10px;
-    padding: 1em;
+    padding: 1em 14em;
     box-shadow: -1px 0px 1px rgba(0,0,0,0.1);
     transition: 200ms;
     font-weight: bold;
